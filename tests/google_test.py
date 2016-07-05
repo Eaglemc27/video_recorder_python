@@ -2,7 +2,7 @@ from time import sleep
 
 from pytest import fail
 
-from com.automation.remarks.decorator import video, video_recorder
+from automation.remarks.decorator import video, video_recorder
 from tests.base_test import *
 
 

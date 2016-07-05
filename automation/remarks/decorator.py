@@ -1,11 +1,12 @@
 import functools
+import inspect
 import os
 from os.path import expanduser
 from time import strftime
 
-from com.automation.remarks.recorder.video_recorder import VideoRecorder
-from com.automation.remarks.utils.file_utils import create_dir
-import inspect
+from automation.remarks.recorder.video_recorder import VideoRecorder
+
+from automation.remarks.utils.file_utils import create_dir
 
 
 def video(enabled=True):
