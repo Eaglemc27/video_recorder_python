@@ -1,18 +1,21 @@
-from selene.conditions import *
-from com.automation.remarks.decorator import video
+from time import sleep
+
+from pytest import fail
+
+from com.automation.remarks.decorator import video, video_recorder
 from tests.base_test import *
-from tests.pages.google_page import GooglePage
 
 
+@video_recorder(video(enabled=True))
 class TestGoogleSearch(BaseTest):
-    @video(name="demo")
-    def test_selene_demo(self):
-        google = GooglePage().open()
-        search = google.search("selene")
-        search.results[0].assure(text("In Greek mythology, Selene is the goddess of the moon"))
+    def test_1(self):
+        sleep(5)
+        fail()
 
-    @video()
-    def test_selene_demo2(self):
-        google = GooglePage().open()
-        search = google.search("selene")
-        search.results[1].assure(text("In Greek mythology, Selene is the goddess of the moo"))
+    def test_2(self):
+        sleep(5)
+        fail()
+
+    def test_3(self):
+        sleep(5)
+        fail()
