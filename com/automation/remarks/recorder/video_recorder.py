@@ -1,4 +1,5 @@
 import logging
+import platform
 import signal
 import subprocess as sp
 
@@ -12,12 +13,15 @@ class VideoRecorder:
         self.video_enabled = True
 
     def start_recording(self):
+        is_windows = platform.system() == 'Windows'
+        source = 'gdigrab' if is_windows else 'x11grab'
+        window = 'desktop' if is_windows else ':0.0'
         command = ['ffmpeg',
                    '-y',  # (optional) overwrite output file if it exists
-                   '-f', 'x11grab',  # grab video from source
+                   '-f', source,  # grab video from source
                    '-video_size', self.get_screen_size(),  # screen size
                    '-r', '24',  # frames per second
-                   '-i', ':0.0',  # The imput comes from a pipe
+                   '-i', window,  # The imput comes from a pipe
                    '-an',  # Tells FFMPEG not to expect any audio
                    self.filename]
 

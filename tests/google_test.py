@@ -5,7 +5,7 @@ from tests.pages.google_page import GooglePage
 
 
 class TestGoogleSearch(BaseTest):
-    @video()
+    @video(name="demo")
     def test_selene_demo(self):
         google = GooglePage().open()
         search = google.search("selene")
@@ -15,4 +15,4 @@ class TestGoogleSearch(BaseTest):
     def test_selene_demo2(self):
         google = GooglePage().open()
         search = google.search("selene")
-        search.results[0].assure(text("In Greek mythology, Selene is the goddess of the moon"))
+        search.results[1].assure(text("In Greek mythology, Selene is the goddess of the moo"))
