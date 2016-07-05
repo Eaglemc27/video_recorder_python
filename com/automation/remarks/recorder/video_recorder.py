@@ -1,12 +1,8 @@
 import logging
-import os
 import signal
 import subprocess as sp
 
 import tkinter as tk
-
-from com.automation.remarks.utils.file_utils import create_dir
-from os.path import expanduser
 
 
 class VideoRecorder:
@@ -16,9 +12,6 @@ class VideoRecorder:
         self.video_enabled = True
 
     def start_recording(self):
-        dir_path = expanduser("~") + os.sep + 'video'  # video folder path
-        create_dir(dir_path)  # create video folder if not exists
-
         command = ['ffmpeg',
                    '-y',  # (optional) overwrite output file if it exists
                    '-f', 'x11grab',  # grab video from source
@@ -26,7 +19,7 @@ class VideoRecorder:
                    '-r', '24',  # frames per second
                    '-i', ':0.0',  # The imput comes from a pipe
                    '-an',  # Tells FFMPEG not to expect any audio
-                   dir_path + os.sep + self.filename]
+                   self.filename]
 
         if self.video_enabled:
             self.proc = sp.Popen(command, stdin=sp.PIPE, stderr=sp.PIPE)
