@@ -32,7 +32,7 @@ class VideoRecorder:
         if self.video_enabled:
             self.proc.send_signal(signal.SIGINT)
             err = self.proc.communicate()
-            logging.info(err)
+            logging.warning(err)
 
     def get_screen_size(self):
         root = tk.Tk()
