@@ -32,7 +32,8 @@ class VideoRecorder:
                    '-f', source,  # grab video from source
                    '-video_size', self.get_screen_size(),  # screen size
                    '-r', '24',  # frames per second
-                   '-i', window,  # The imput comes from a pipe
+                   '-i',
+                   '-an', window,  # The imput comes from a pipe
                    self.filename]
 
         if self.video_enabled:
