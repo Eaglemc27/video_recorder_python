@@ -4,9 +4,8 @@ import os
 from os.path import expanduser
 from time import strftime
 
-from automation.remarks.recorder.video_recorder import VideoRecorder
-
-from automation.remarks.utils.file_utils import create_dir
+from test_recorder.file_utils import create_dir
+from test_recorder.video_recorder import VideoRecorder
 
 
 def video(enabled=True):

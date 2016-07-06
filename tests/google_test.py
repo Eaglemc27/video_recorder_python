@@ -2,12 +2,11 @@ from time import sleep
 
 from pytest import fail
 
-from automation.remarks.decorator import video, video_recorder
-from tests.base_test import *
+from test_recorder.decorator import video, video_recorder
 
 
 @video_recorder(video(enabled=True))
-class TestGoogleSearch(BaseTest):
+class TestGoogleSearch(object):
     def test_1(self):
         sleep(5)
         fail()
