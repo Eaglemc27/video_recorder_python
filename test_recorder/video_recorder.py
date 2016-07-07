@@ -7,12 +7,11 @@ import tkinter as tk
 
 
 class VideoRecorder:
-    def __init__(self, filename):
-        self.filename = filename
+    def __init__(self):
         self.proc = None
         self.video_enabled = True
 
-    def start_recording(self):
+    def start_recording(self, filename):
 
         is_windows = platform.system() == 'Windows'
         is_mac = platform.system() == 'Darwin'
@@ -34,7 +33,7 @@ class VideoRecorder:
                    '-r', '24',  # frames per second
                    '-i', window,  # The input comes from a pipe
                    '-an',
-                   self.filename]
+                   filename]
 
         if self.video_enabled:
             self.proc = sp.Popen(command, stdin=sp.PIPE, stderr=sp.PIPE)

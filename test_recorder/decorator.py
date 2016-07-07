@@ -13,9 +13,9 @@ def video(enabled=True):
         @functools.wraps(func)
         def wrapper(*args, **kwargs):
             file_path = get_file_path(func)
-            recorder = VideoRecorder(file_path)
+            recorder = VideoRecorder()
             recorder.video_enabled = enabled
-            recorder.start_recording()
+            recorder.start_recording(file_path)
             try:
                 func(*args, **kwargs)
                 os.remove(file_path)
