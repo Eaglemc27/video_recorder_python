@@ -21,12 +21,12 @@ def get_screen_size():
     if is_windows:
         import ctypes
         user32 = ctypes.windll.user32
-        return __format__(user32.GetSystemMetrics(0), user32.GetSystemMetrics(1))
+        return __format(user32.GetSystemMetrics(0), user32.GetSystemMetrics(1))
     else:
         import tkinter as tk
         root = tk.Tk()
-        return __format__(root.winfo_screenwidth(), root.winfo_screenheight())
+        return __format(root.winfo_screenwidth(), root.winfo_screenheight())
 
 
-def __format__(screen_width, screen_height):
+def __format(screen_width, screen_height):
     return '{0}x{1}'.format(screen_width, screen_height)
