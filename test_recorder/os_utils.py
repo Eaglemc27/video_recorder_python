@@ -1,4 +1,6 @@
 import platform
+import ctypes
+import Tkinter
 
 is_windows = platform.system() == 'Windows'
 is_mac = platform.system() == 'Darwin'
@@ -19,12 +21,10 @@ def get_window():
 
 def get_screen_size():
     if is_windows:
-        import ctypes
         user32 = ctypes.windll.user32
         return __format(user32.GetSystemMetrics(0), user32.GetSystemMetrics(1))
     else:
-        import tkinter as tk
-        root = tk.Tk()
+        root = Tkinter.Tk()
         return __format(root.winfo_screenwidth(), root.winfo_screenheight())
 
 
