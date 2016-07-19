@@ -12,7 +12,7 @@ def video(enabled=True):
     def video_decorator(func):
         @functools.wraps(func)
         def wrapper(*args, **kwargs):
-            file_path = get_file_path(func)
+            file_path = _get_file_path(func)
             recorder = VideoRecorder()
             recorder.video_enabled = enabled
             recorder.start_recording(file_path)
@@ -23,15 +23,15 @@ def video(enabled=True):
                 recorder.stop_recording()
 
         return wrapper
-
-    def get_file_path(func):
-        dir_path = expanduser("~") + os.sep + 'video'  # video folder path
-        create_dir(dir_path)  # create video folder if not exists
-        file_name = '{0}_{1}.mp4'.format(func.func_name,
-                                         strftime("%Y_%m_%d_%H_%M_%S"))  # format timestamp
-        return dir_path + os.sep + file_name  # save file to user_home/video directory
-
     return video_decorator
+
+
+def _get_file_path(func):
+    dir_path = expanduser("~") + os.sep + 'video'  # video folder path
+    create_dir(dir_path)  # create video folder if not exists
+    file_name = '{0}_{1}.mp4'.format(func.func_name,
+                                     strftime("%Y_%m_%d_%H_%M_%S"))  # format timestamp
+    return dir_path + os.sep + file_name  # save file to user_home/video directory
 
 
 def video_recorder(decorator, prefix='test_'):
