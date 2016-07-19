@@ -6,11 +6,15 @@ from test_recorder.os_utils import get_source, get_window, get_screen_size
 
 
 class VideoRecorder:
+
+    last_recording = ""
+
     def __init__(self):
         self.process = None
         self.video_enabled = True
 
     def start_recording(self, filename):
+        VideoRecorder.last_recording = filename
         command = ['ffmpeg',
                    '-y',  # (optional) overwrite output file if it exists
                    '-f', get_source(),  # grab video from source
